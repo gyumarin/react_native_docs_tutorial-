@@ -1,13 +1,12 @@
 import React from 'react';
-import {ContactContextProvider} from '~/Context/Contact';
-import Navigator from '~/Screens/Navigator';
+
+import {createStackNavigator} from '@react-navigation/stack';
+import Navigation from './Navigation';
+
+const Stack = createStackNavigator();
 
 const App = () => {
-  return (
-    <ContactContextProvider>
-      <Navigator />
-    </ContactContextProvider>
-  );
+  return <Navigation />;
 };
 
 export default App;
