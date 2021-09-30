@@ -1,39 +1,21 @@
-import React, {useEffect} from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
-import {Contact} from 'react-native-contacts';
 import styled from 'styled-components/native';
+import React, {useContext} from 'react';
+import {ContactContext} from '~/Context/Contact';
 
-interface Props {
-  contactList: Contact[];
-  deleteContacts: (contact: Contact) => void;
-}
-
-interface Props2 {
-  contact: Contact;
-  deleteContacts: (contact: Contact) => void;
-}
-
-const ContactList = ({contactList, deleteContacts}: Props) => {
-  useEffect(() => {}, [contactList]);
-
-  return (
-    <View>
-      {contactList.map((contact, index) => (
-        <Item contact={contact} key={index} deleteContacts={deleteContacts} />
-      ))}
-    </View>
-  );
-};
-
-export default ContactList;
-
-const Item = ({contact, deleteContacts}: any) => {
+const Item = ({contact, navigation}: any) => {
+  const {deleteContacts, selectContact} = useContext(ContactContext);
   const {recordID, emailAddresses, familyName, givenName, phoneNumbers} =
     contact;
   const [{email}] = emailAddresses;
   const [{number}] = phoneNumbers;
+
+  const onPressContact = () => {
+    navigation.navigate('UPDATE');
+    selectContact(contact);
+  };
+
   return (
-    <ItemContainer>
+    <ItemContainer onPress={onPressContact}>
       <TextView>
         <Font_1>
           이름 : {familyName} {givenName}
@@ -48,15 +30,17 @@ const Item = ({contact, deleteContacts}: any) => {
   );
 };
 
-const ItemContainer = styled.View`
-  /* background-color: red; */
+export default Item;
+
+const ItemContainer = styled.TouchableOpacity`
+  background-color: #f2f2b3;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   border: 1px;
   padding: 5px 15px;
-  margin-top: 10px;
+  margin: 10px 10px;
   border-radius: 10px;
 `;
 
@@ -71,12 +55,9 @@ const Font_2 = styled.Text`
   padding: 10px 15px;
 `;
 
-const Font_3 = styled.Text`
-  font-size: 9px;
-`;
-
 const DeleteButton = styled.TouchableOpacity`
   font-size: 24px;
+  background-color: #f2b3de;
 `;
 
 const TextView = styled.View``;
