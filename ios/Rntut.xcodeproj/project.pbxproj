@@ -145,7 +145,6 @@
 				0CC5EA8BCA0CC9F039A38571 /* Pods-Rntut-RntutTests.debug.xcconfig */,
 				C7C63BB75489F61C656D2BEB /* Pods-Rntut-RntutTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -449,6 +448,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P98Q787YQ8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Rntut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -475,6 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P98Q787YQ8;
 				INFOPLIST_FILE = Rntut/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

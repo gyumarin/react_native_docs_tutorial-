@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import {Text, View, StyleSheet, Button, Image} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import Dialog from 'react-native-dialog';
@@ -148,6 +148,69 @@ export const LogTitle = () => {
             setText('');
           }}
         /> */}
+    </View>
+  );
+};
+
+export const Home = () => {
+  return (
+    <View style={styles.Container}>
+      <Text>Home</Text>
+    </View>
+  );
+};
+export const Profile = ({route, navigation}: any) => {
+  return (
+    <View style={styles.Container}>
+      <Text>Profile</Text>
+      <Button
+        title="Go Root"
+        onPress={() => {
+          navigation.navigate('Home', {
+            screen: 'King',
+            initial: false,
+            params: {count: 1},
+          });
+        }}
+      />
+    </View>
+  );
+};
+export const Settings = () => {
+  return (
+    <View style={styles.Container}>
+      <Text>Settings</Text>
+    </View>
+  );
+};
+export const Feed = () => {
+  return (
+    <View style={styles.Container}>
+      <Text>Feed </Text>
+    </View>
+  );
+};
+export const Messages = () => {
+  return (
+    <View style={styles.Container}>
+      <Text>Messages </Text>
+    </View>
+  );
+};
+export const King = ({route, navigation}: any) => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (route.params) {
+      setCount(count + route.params.count);
+    }
+    return () => {
+      console.log('byKing');
+    };
+  }, []);
+  return (
+    <View style={styles.Container}>
+      <Text>King </Text>
+      <Text>count : {count} </Text>
     </View>
   );
 };
